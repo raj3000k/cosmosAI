@@ -36,7 +36,7 @@ class _SignUp2State extends State<SignUp2> {
                     BoxShadow(color: Colors.grey.shade300, spreadRadius: 3),
                   ],
                   border: Border(),
-                  borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                  borderRadius: BorderRadius.all(Radius.circular(50.0))),
               child: Column(
                 children: [
                   Container(
@@ -96,29 +96,42 @@ class _SignUp2State extends State<SignUp2> {
                       Container(
                           margin: EdgeInsets.only(top: 10),
                           child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => DisabilitySelect()),
-                                );
-                              },
-                              child: Container(
-                                color: Colors.yellow,
-                                child: Text('Register'),
-                              ))),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DisabilitySelect()),
+                              );
+                            },
+                            child: Container(
+                              color: Colors.yellow,
+                              child: Text(
+                                'Register',
+                                style: TextStyle(fontSize: 15),
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                            ),
+                          )),
                       Container(
                           margin: EdgeInsets.only(top: 0),
                           child: ElevatedButton(
                               onPressed: () {},
                               style: ElevatedButton.styleFrom(
-                                primary: Colors.transparent, // Background color
+                                primary: Colors.transparent,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ), // Background color
                               ),
                               child: Container(
                                 child: Text(
                                   'Already Registered? Login',
                                   style: TextStyle(
                                     color: Colors.black,
+                                    fontSize: 15,
                                     fontWeight: FontWeight.bold,
                                     fontStyle: FontStyle.italic,
                                     decoration: TextDecoration.underline,
