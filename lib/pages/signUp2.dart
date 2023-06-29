@@ -98,6 +98,24 @@ class _SignUp2State extends State<SignUp2> {
                               child: Container(
                                 color: Colors.yellow,
                                 child: Text('Register'),
+                              ))),
+                      Container(
+                          margin: EdgeInsets.only(top: 0),
+                          child: ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.transparent, // Background color
+                              ),
+                              child: Container(
+                                child: Text(
+                                  'Already Registered? Login',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FontStyle.italic,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                ),
                               )))
                     ],
                   )
