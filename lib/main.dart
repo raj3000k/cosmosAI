@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sample_app/pages/homePage.dart';
+import 'package:sample_app/pages/signUp.dart';
 
 void main() {
   runApp(MyApp());
@@ -98,11 +99,10 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                 padding: EdgeInsets.all(20),
               ),
               onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //       builder: (context) => DifferentiabilitySelectionScreen()),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignUp()),
+                );
               },
             ),
 
