@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sample_app/pages/disabilitySelect.dart';
 
 class SignUp2 extends StatefulWidget {
   const SignUp2({super.key});
@@ -94,7 +95,13 @@ class _SignUp2State extends State<SignUp2> {
                       Container(
                           margin: EdgeInsets.only(top: 10),
                           child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => DisabilitySelect()),
+                                );
+                              },
                               child: Container(
                                 color: Colors.yellow,
                                 child: Text('Register'),
