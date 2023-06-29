@@ -29,6 +29,9 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    String hexColor = "#454545";
+    Color color1 =
+        Color(int.parse(hexColor.substring(1, 7), radix: 16) + 0xFF000000);
     return Scaffold(
       appBar: null,
       backgroundColor: Colors.black,
@@ -45,12 +48,13 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
               //For Giving Space
               height: 50,
             ),
+
             DropdownButton<String>(
-              dropdownColor: Colors.black,
+              dropdownColor: color1,
 
               borderRadius: BorderRadius.circular(20),
               // .copyWith(topLeft: Radius.circular(0)),
-              isExpanded: true,
+              // isExpanded: true,
               hint: Text(
                 'Select Language',
                 textAlign: TextAlign.center,
@@ -101,7 +105,7 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                 // Navigator.push(
                 //   context,
                 //   MaterialPageRoute(
-                //       builder: (context) => DifferentiabilitySelectionScreen()),
+                //       builder: (context) => GettingStartedPage()),
                 // );
               },
             ),
