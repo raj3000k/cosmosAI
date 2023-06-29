@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sample_app/pages/homePage.dart';
-import 'package:sample_app/pages/signUp.dart';
+import 'package:sample_app/pages/signUp2.dart';
 
 void main() {
   runApp(MyApp());
@@ -105,7 +105,7 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => SignUp()),
+                  MaterialPageRoute(builder: (context) => SignUp2()),
                 );
               },
             ),
