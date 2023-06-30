@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:alan_voice/alan_voice.dart';
+import 'package:sample_app/pages/signUp2.dart';
 
 class DisabilitySelect extends StatefulWidget {
   const DisabilitySelect({super.key});
@@ -12,10 +14,34 @@ class _DisabilitySelectState extends State<DisabilitySelect> {
   bool physicalSelected = false;
   bool visualSelected = false;
   String? disablity;
+  void _handleCommand(Map<String, dynamic> command) {
+    switch (command["command"]) {
+      case "Sign Up":
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => SignUp2()),
+        );
+        break;
+      case "back":
+        Navigator.pop(context);
+        break;
+      default:
+        debugPrint("Unknown command");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    AlanVoice.addButton(
+        "6b6a477a86044fbf22648922a9a4176f2e956eca572e1d8b807a3e2338fdd0dc/stage");
+
+    /// Handle commands from Alan AI Studio
+
+    AlanVoice.onCommand.add((command) {
+      debugPrint("got new command ${command.toString()}");
+    });
+    AlanVoice.onCommand.add((command) => _handleCommand(command.data));
     return Scaffold(
       body: Container(
         color: Colors.black,

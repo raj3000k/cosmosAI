@@ -16,6 +16,7 @@ class _SignUp2State extends State<SignUp2> {
     Color color1 =
         Color(int.parse(hexColor.substring(1, 7), radix: 16) + 0xFF000000);
     double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
 
     return Scaffold(
         body: Container(
@@ -129,7 +130,6 @@ class _SignUp2State extends State<SignUp2> {
                                 ), // Background color
                               ),
                               child: Container(
-                                // margin: EdgeInsets.all(50),
                                 child: Text(
                                   'Already Registered? Login',
                                   style: TextStyle(
