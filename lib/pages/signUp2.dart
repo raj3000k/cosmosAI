@@ -12,6 +12,9 @@ class _SignUp2State extends State<SignUp2> {
   String? fullName;
   @override
   Widget build(BuildContext context) {
+    String hexColor = "#454545";
+    Color color1 =
+        Color(int.parse(hexColor.substring(1, 7), radix: 16) + 0xFF000000);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
@@ -121,13 +124,12 @@ class _SignUp2State extends State<SignUp2> {
                           child: ElevatedButton(
                               onPressed: () {},
                               style: ElevatedButton.styleFrom(
-                                primary: Colors.transparent,
+                                primary: Colors.grey.shade400,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ), // Background color
                               ),
                               child: Container(
-                                margin: EdgeInsets.only(top: 10),
                                 child: Text(
                                   'Already Registered? Login',
                                   style: TextStyle(
