@@ -33,6 +33,7 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
     String hexColor = "#454545";
     Color color1 =
         Color(int.parse(hexColor.substring(1, 7), radix: 16) + 0xFF000000);
+
     return Scaffold(
       appBar: null,
       backgroundColor: Colors.black,
@@ -125,6 +126,7 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
             //   height: 300,
             //   alignment: Alignment.bottomCenter,
             // ),
+            Container()
           ],
         ),
       ),

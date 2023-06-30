@@ -127,6 +127,7 @@ class _SignUp2State extends State<SignUp2> {
                                 ), // Background color
                               ),
                               child: Container(
+                                margin: EdgeInsets.only(top: 10),
                                 child: Text(
                                   'Already Registered? Login',
                                   style: TextStyle(
