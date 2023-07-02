@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:alan_voice/alan_voice.dart';
+import 'package:sample_app/pages/mapTesting.dart';
 import 'package:sample_app/pages/signUp2.dart';
 
 class DisabilitySelect extends StatefulWidget {
@@ -162,10 +163,10 @@ class _DisabilitySelectState extends State<DisabilitySelect> {
               margin: EdgeInsets.only(left: 250),
               child: ElevatedButton(
                   onPressed: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => SignUp2()),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => MapTesting()),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     shape: CircleBorder(), //<-- SEE HERE
