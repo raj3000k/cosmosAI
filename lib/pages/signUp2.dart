@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sample_app/pages/disabilitySelect.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class SignUp2 extends StatefulWidget {
   const SignUp2({super.key});
@@ -9,7 +10,9 @@ class SignUp2 extends StatefulWidget {
 }
 
 class _SignUp2State extends State<SignUp2> {
-  String? fullName;
+  String fullName = '\0';
+  String email = '\0';
+  String phoneNumber = '\0';
   @override
   Widget build(BuildContext context) {
     String hexColor = "#454545";
@@ -77,7 +80,7 @@ class _SignUp2State extends State<SignUp2> {
                           ),
                           onChanged: (value) {
                             setState(() {
-                              fullName = value;
+                              email = value;
                             });
                           },
                         ),
@@ -91,7 +94,7 @@ class _SignUp2State extends State<SignUp2> {
                           ),
                           onChanged: (value) {
                             setState(() {
-                              fullName = value;
+                              phoneNumber = value;
                             });
                           },
                         ),
@@ -100,11 +103,21 @@ class _SignUp2State extends State<SignUp2> {
                           margin: EdgeInsets.only(top: 10),
                           child: ElevatedButton(
                             onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => DisabilitySelect()),
-                              );
+                              if (fullName == '\0' ||
+                                  email == '\0' ||
+                                  phoneNumber == '\0') {
+                                Fluttertoast.showToast(
+                                    msg: "Please Complete all the fields",
+                                    toastLength: Toast.LENGTH_LONG,
+                                    fontSize: 20,
+                                    backgroundColor: Colors.redAccent);
+                              } else {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => DisabilitySelect()),
+                                );
+                              }
                             },
                             child: Container(
                               color: Colors.yellow,
