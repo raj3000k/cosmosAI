@@ -43,7 +43,12 @@ class _MapTestingState extends State<MapTesting> {
   bool wheelChairSelected = false;
   bool onboardingSelected = false;
   bool signSelected = false;
-  String requests = 'Wheelchair';
+  String wheelchair = 'Wheelchair';
+  String assistance = 'Onboard Assistance';
+  String sign = 'Sign language';
+  String pickUp = '';
+  String destination = '';
+
   GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
@@ -333,17 +338,25 @@ class _MapTestingState extends State<MapTesting> {
                                 fillColor: Colors.black),
                             onChanged: (value) {
                               // Handle search input
+                              setState(() {
+                                destination = value;
+                              });
                             },
                           ),
                         ),
                         ElevatedButton(
                             onPressed: () {
                               Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        SearchingCab(requests: requests)),
-                              );
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SearchingCab(
+                                          wheelChairSelected:
+                                              wheelChairSelected,
+                                          onboardingSelected:
+                                              onboardingSelected,
+                                          signSelected: signSelected,
+                                          pickUp: pickUp,
+                                          destination: destination)));
                             },
                             child: Text('Search Ride')),
                       ],
@@ -381,6 +394,7 @@ class _MapTestingState extends State<MapTesting> {
                           ),
                           onChanged: (value) {
                             // Handle search input
+                            pickUp = value;
                           },
                         ),
                       )
