@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class SearchingCab extends StatefulWidget {
   final bool wheelChairSelected;
@@ -123,12 +124,33 @@ class _SearchingCabState extends State<SearchingCab> {
                             Text(
                               'Driver: ',
                               style: TextStyle(fontStyle: FontStyle.italic),
+                            ),
+                            Container(
+                              height: 20,
+                              child: RatingBar(
+                                  initialRating: 4,
+                                  direction: Axis.horizontal,
+                                  allowHalfRating: true,
+                                  itemCount: 5,
+                                  itemSize: 20,
+                                  ratingWidget: RatingWidget(
+                                      full: const Icon(Icons.star,
+                                          color: Colors.amber),
+                                      half: const Icon(
+                                        Icons.star_half,
+                                        color: Colors.amber,
+                                      ),
+                                      empty: const Icon(
+                                        Icons.star_outline,
+                                        color: Colors.amber,
+                                      )),
+                                  onRatingUpdate: (value) {}),
                             )
                           ],
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 10),
+                        margin: EdgeInsets.only(left: 15),
                         child: Column(
                           children: [
                             Text(
@@ -136,12 +158,33 @@ class _SearchingCabState extends State<SearchingCab> {
                               style: TextStyle(fontStyle: FontStyle.italic),
                             ),
                             Text(
-                              'Category: Sedan',
+                              '7 Minutes',
+                              style: TextStyle(
+                                  color: Colors.green.shade600,
+                                  fontStyle: FontStyle.italic),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 15, top: 10),
+                        child: Column(
+                          children: [
+                            Text(
+                              'Expected Fare',
                               style: TextStyle(fontStyle: FontStyle.italic),
                             ),
                             Text(
-                              'Driver: ',
-                              style: TextStyle(fontStyle: FontStyle.italic),
+                              'Rs. 270',
+                              style: TextStyle(
+                                  color: Colors.green.shade600,
+                                  fontStyle: FontStyle.italic),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 8, bottom: 5),
+                              height: 25,
+                              child: ElevatedButton(
+                                  onPressed: () {}, child: Text('Book Now')),
                             )
                           ],
                         ),
