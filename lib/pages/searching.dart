@@ -191,6 +191,214 @@ class _SearchingCabState extends State<SearchingCab> {
                       )
                     ],
                   ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20, left: 10, right: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey.shade600,
+                          spreadRadius: 1,
+                          blurRadius: 1)
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        child: Image.asset(
+                          'assets/images/miniCab.png',
+                          height: 70,
+                          width: 70,
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 10),
+                        child: Column(
+                          children: [
+                            Text(
+                              'Tata Tiago',
+                              style: TextStyle(fontStyle: FontStyle.italic),
+                            ),
+                            Text(
+                              'Category: Mini',
+                              style: TextStyle(fontStyle: FontStyle.italic),
+                            ),
+                            Text(
+                              'Driver: ',
+                              style: TextStyle(fontStyle: FontStyle.italic),
+                            ),
+                            Container(
+                              height: 20,
+                              child: RatingBar(
+                                  initialRating: 4.5,
+                                  direction: Axis.horizontal,
+                                  allowHalfRating: true,
+                                  itemCount: 5,
+                                  itemSize: 20,
+                                  ratingWidget: RatingWidget(
+                                      full: const Icon(Icons.star,
+                                          color: Colors.amber),
+                                      half: const Icon(
+                                        Icons.star_half,
+                                        color: Colors.amber,
+                                      ),
+                                      empty: const Icon(
+                                        Icons.star_outline,
+                                        color: Colors.amber,
+                                      )),
+                                  onRatingUpdate: (value) {}),
+                            )
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 15),
+                        child: Column(
+                          children: [
+                            Text(
+                              'ETA',
+                              style: TextStyle(fontStyle: FontStyle.italic),
+                            ),
+                            Text(
+                              '5 Minutes',
+                              style: TextStyle(
+                                  color: Colors.green.shade600,
+                                  fontStyle: FontStyle.italic),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 15, top: 10),
+                        child: Column(
+                          children: [
+                            Text(
+                              'Expected Fare',
+                              style: TextStyle(fontStyle: FontStyle.italic),
+                            ),
+                            Text(
+                              'Rs. 200',
+                              style: TextStyle(
+                                  color: Colors.green.shade600,
+                                  fontStyle: FontStyle.italic),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 8, bottom: 5),
+                              height: 25,
+                              child: ElevatedButton(
+                                  onPressed: () {}, child: Text('Book Now')),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 20, left: 10, right: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade300,
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.grey.shade600,
+                          spreadRadius: 1,
+                          blurRadius: 1)
+                    ],
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        child: Image.asset(
+                          'assets/images/suvCab.png',
+                          height: 70,
+                          width: 70,
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 10),
+                        child: Column(
+                          children: [
+                            Text(
+                              'Hyundai Creta',
+                              style: TextStyle(fontStyle: FontStyle.italic),
+                            ),
+                            Text(
+                              'Category: SUV',
+                              style: TextStyle(fontStyle: FontStyle.italic),
+                            ),
+                            Text(
+                              'Driver: ',
+                              style: TextStyle(fontStyle: FontStyle.italic),
+                            ),
+                            Container(
+                              height: 20,
+                              child: RatingBar(
+                                  initialRating: 4.5,
+                                  direction: Axis.horizontal,
+                                  allowHalfRating: true,
+                                  itemCount: 5,
+                                  itemSize: 20,
+                                  ratingWidget: RatingWidget(
+                                      full: const Icon(Icons.star,
+                                          color: Colors.amber),
+                                      half: const Icon(
+                                        Icons.star_half,
+                                        color: Colors.amber,
+                                      ),
+                                      empty: const Icon(
+                                        Icons.star_outline,
+                                        color: Colors.amber,
+                                      )),
+                                  onRatingUpdate: (value) {}),
+                            )
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 15),
+                        child: Column(
+                          children: [
+                            Text(
+                              'ETA',
+                              style: TextStyle(fontStyle: FontStyle.italic),
+                            ),
+                            Text(
+                              '5 Minutes',
+                              style: TextStyle(
+                                  color: Colors.green.shade600,
+                                  fontStyle: FontStyle.italic),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 15, top: 10),
+                        child: Column(
+                          children: [
+                            Text(
+                              'Expected Fare',
+                              style: TextStyle(fontStyle: FontStyle.italic),
+                            ),
+                            Text(
+                              'Rs. 320',
+                              style: TextStyle(
+                                  color: Colors.green.shade600,
+                                  fontStyle: FontStyle.italic),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(top: 8, bottom: 5),
+                              height: 25,
+                              child: ElevatedButton(
+                                  onPressed: () {}, child: Text('Book Now')),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 )
               ],
             ),
