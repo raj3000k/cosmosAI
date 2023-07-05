@@ -155,7 +155,7 @@ class _DisabilitySelectState extends State<DisabilitySelect> {
             Container(
               margin: EdgeInsets.only(top: 5),
               child: Text(
-                'Hearing',
+                'Visual',
                 style: TextStyle(color: Colors.white, fontSize: 25),
               ),
             ),
