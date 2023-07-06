@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:sample_app/pages/bookingConfirm.dart';
 
 class SearchingCab extends StatefulWidget {
   final bool wheelChairSelected;
@@ -392,7 +393,14 @@ class _SearchingCabState extends State<SearchingCab> {
                               margin: EdgeInsets.only(top: 8, bottom: 5),
                               height: 25,
                               child: ElevatedButton(
-                                  onPressed: () {}, child: Text('Book Now')),
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                ConfirmBooking()));
+                                  },
+                                  child: Text('Book Now')),
                             )
                           ],
                         ),
