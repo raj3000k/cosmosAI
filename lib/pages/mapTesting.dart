@@ -1,8 +1,9 @@
+// import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:sample_app/pages/searching.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class MapTesting extends StatefulWidget {
   const MapTesting({super.key});
@@ -194,6 +195,23 @@ class _MapTestingState extends State<MapTesting> {
                 ],
               ),
             ],
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 100, left: 18),
+            child: ElevatedButton.icon(
+              onPressed: () => UrlLauncher.launch("tel://21213123123"),
+              icon: Icon(
+                // <-- Icon
+                Icons.phone,
+                size: 24.0,
+              ),
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+              label: Text('Book with a call'), // <-- Text
+            ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
