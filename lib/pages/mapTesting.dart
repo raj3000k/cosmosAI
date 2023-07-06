@@ -63,7 +63,7 @@ class _MapTestingState extends State<MapTesting> {
           children: <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Colors.black,
               ),
               child: Column(
                 children: [
@@ -82,13 +82,13 @@ class _MapTestingState extends State<MapTesting> {
                 ],
               ),
             ),
-            ListTile(
-              leading: Icon(Icons.electric_scooter),
-              title: Text('Electric'),
-              onTap: () {
-                // Handle Electric press
-              },
-            ),
+            // ListTile(
+            //   leading: Icon(Icons.electric_scooter),
+            //   title: Text('Electric'),
+            //   onTap: () {
+            //     // Handle Electric press
+            //   },
+            // ),
             ListTile(
               leading: Icon(Icons.directions_car),
               title: Text('Your Rides'),
@@ -97,8 +97,8 @@ class _MapTestingState extends State<MapTesting> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.account_balance_wallet),
-              title: Text('Ola Money'),
+              leading: Icon(Icons.handshake_outlined),
+              title: Text('Pay Later'),
               onTap: () {
                 // Handle Ola Money press
               },
@@ -335,7 +335,7 @@ class _MapTestingState extends State<MapTesting> {
                     margin: EdgeInsets.fromLTRB(8, 5, 8, 5),
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        borderRadius: BorderRadius.all(Radius.circular(26)),
                         boxShadow: [
                           BoxShadow(
                               color: Colors.grey.shade600,
@@ -350,9 +350,10 @@ class _MapTestingState extends State<MapTesting> {
                           decoration: BoxDecoration(
                               color: Colors.grey.shade200,
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(2))),
+                                  BorderRadius.all(Radius.circular(17))),
                           child: TextField(
                             decoration: InputDecoration(
+                                enabledBorder: InputBorder.none,
                                 hintText: 'Search Destination',
                                 suffixIcon: Icon(Icons.search),
                                 fillColor: Colors.black),
@@ -406,9 +407,11 @@ class _MapTestingState extends State<MapTesting> {
                         // padding: EdgeInsets.all(5),
                         decoration: BoxDecoration(
                             color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(2))),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
                         child: TextField(
                           decoration: InputDecoration(
+                            enabledBorder: InputBorder.none,
                             hintText: 'Pick Up Location',
                             suffixIcon: Icon(Icons.search),
                           ),
