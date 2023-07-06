@@ -23,6 +23,9 @@ class SearchingCab extends StatefulWidget {
 }
 
 class _SearchingCabState extends State<SearchingCab> {
+  String driverName = '';
+  String carName = '';
+  String carNumber = '';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,7 +93,9 @@ class _SearchingCabState extends State<SearchingCab> {
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 20, left: 10, right: 10),
+                  margin: EdgeInsets.only(
+                    top: 20,
+                  ),
                   decoration: BoxDecoration(
                     color: Colors.grey.shade300,
                     borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -123,7 +128,7 @@ class _SearchingCabState extends State<SearchingCab> {
                               style: TextStyle(fontStyle: FontStyle.italic),
                             ),
                             Text(
-                              'Driver: ',
+                              'Driver: Mukesh Kumar',
                               style: TextStyle(fontStyle: FontStyle.italic),
                             ),
                             Container(
@@ -151,7 +156,7 @@ class _SearchingCabState extends State<SearchingCab> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 15),
+                        margin: EdgeInsets.only(left: 5),
                         child: Column(
                           children: [
                             Text(
@@ -168,7 +173,7 @@ class _SearchingCabState extends State<SearchingCab> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 15, top: 10),
+                        margin: EdgeInsets.only(top: 10, left: 5),
                         child: Column(
                           children: [
                             Text(
@@ -185,7 +190,23 @@ class _SearchingCabState extends State<SearchingCab> {
                               margin: EdgeInsets.only(top: 8, bottom: 5),
                               height: 25,
                               child: ElevatedButton(
-                                  onPressed: () {}, child: Text('Book Now')),
+                                  onPressed: () {
+                                    setState(() {
+                                      carName = 'Honda City';
+                                      carNumber = 'CG 04 A 5252';
+                                      driverName = 'Mukesh Kumar';
+                                    });
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                ConfirmBooking(
+                                                  carName: carName,
+                                                  driverName: driverName,
+                                                  carNumber: carNumber,
+                                                )));
+                                  },
+                                  child: Text('Book Now')),
                             )
                           ],
                         ),
@@ -194,7 +215,7 @@ class _SearchingCabState extends State<SearchingCab> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 20, left: 10, right: 10),
+                  margin: EdgeInsets.only(top: 20),
                   decoration: BoxDecoration(
                     color: Colors.grey.shade300,
                     borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -227,7 +248,7 @@ class _SearchingCabState extends State<SearchingCab> {
                               style: TextStyle(fontStyle: FontStyle.italic),
                             ),
                             Text(
-                              'Driver: ',
+                              'Driver: Sanjeev Mishra ',
                               style: TextStyle(fontStyle: FontStyle.italic),
                             ),
                             Container(
@@ -255,7 +276,7 @@ class _SearchingCabState extends State<SearchingCab> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 15),
+                        margin: EdgeInsets.only(left: 5),
                         child: Column(
                           children: [
                             Text(
@@ -272,7 +293,7 @@ class _SearchingCabState extends State<SearchingCab> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 15, top: 10),
+                        margin: EdgeInsets.only(left: 5, top: 10),
                         child: Column(
                           children: [
                             Text(
@@ -289,7 +310,22 @@ class _SearchingCabState extends State<SearchingCab> {
                               margin: EdgeInsets.only(top: 8, bottom: 5),
                               height: 25,
                               child: ElevatedButton(
-                                  onPressed: () {}, child: Text('Book Now')),
+                                  onPressed: () {
+                                    setState(() {
+                                      carName = 'Tata Tiago';
+                                      carNumber = 'DL 04 A 2552';
+                                      driverName = 'Sanjeev Kumar';
+                                    });
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                ConfirmBooking(
+                                                    carName: carName,
+                                                    driverName: driverName,
+                                                    carNumber: carNumber)));
+                                  },
+                                  child: Text('Book Now')),
                             )
                           ],
                         ),
@@ -298,7 +334,7 @@ class _SearchingCabState extends State<SearchingCab> {
                   ),
                 ),
                 Container(
-                  margin: EdgeInsets.only(top: 20, left: 10, right: 10),
+                  margin: EdgeInsets.only(top: 20),
                   decoration: BoxDecoration(
                     color: Colors.grey.shade300,
                     borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -319,7 +355,7 @@ class _SearchingCabState extends State<SearchingCab> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 10),
+                        margin: EdgeInsets.only(left: 15),
                         child: Column(
                           children: [
                             Text(
@@ -331,7 +367,7 @@ class _SearchingCabState extends State<SearchingCab> {
                               style: TextStyle(fontStyle: FontStyle.italic),
                             ),
                             Text(
-                              'Driver: ',
+                              'Driver: Mick Daniel ',
                               style: TextStyle(fontStyle: FontStyle.italic),
                             ),
                             Container(
@@ -359,7 +395,7 @@ class _SearchingCabState extends State<SearchingCab> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 15),
+                        margin: EdgeInsets.only(left: 5),
                         child: Column(
                           children: [
                             Text(
@@ -376,7 +412,7 @@ class _SearchingCabState extends State<SearchingCab> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 15, top: 10),
+                        margin: EdgeInsets.only(top: 10, left: 5),
                         child: Column(
                           children: [
                             Text(
@@ -394,11 +430,19 @@ class _SearchingCabState extends State<SearchingCab> {
                               height: 25,
                               child: ElevatedButton(
                                   onPressed: () {
+                                    setState(() {
+                                      carName = 'Hyundai Creta';
+                                      carNumber = 'MH 04 A 6752';
+                                      driverName = 'Mick Daniel';
+                                    });
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                ConfirmBooking()));
+                                                ConfirmBooking(
+                                                    carName: carName,
+                                                    driverName: driverName,
+                                                    carNumber: carNumber)));
                                   },
                                   child: Text('Book Now')),
                             )

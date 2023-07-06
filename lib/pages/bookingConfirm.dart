@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:sample_app/pages/mapTesting.dart';
 
 class ConfirmBooking extends StatefulWidget {
-  const ConfirmBooking({super.key});
+  final String carName;
+  final String driverName;
+  final String carNumber;
+
+  const ConfirmBooking({
+    Key? key,
+    required this.carName,
+    required this.driverName,
+    required this.carNumber,
+  }) : super(key: key);
 
   @override
   State<ConfirmBooking> createState() => _ConfirmBookingState();
@@ -23,7 +33,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
   Widget build(BuildContext context) {
     var points = <LatLng>[
       new LatLng(21.2441408, 81.6319132),
-      new LatLng(21.2121993, 81.6530949)
+      new LatLng(21.252193, 81.6044256)
     ];
     return Scaffold(
       body: Stack(
@@ -51,7 +61,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                             ));
                       }),
                   Marker(
-                      point: LatLng(21.2121993, 81.6530949),
+                      point: LatLng(21.252193, 81.6044256),
                       builder: (_) {
                         return GestureDetector(
                             onTap: () {},
@@ -64,7 +74,9 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
               PolylineLayer(
                 polylines: [
                   new Polyline(
-                      points: points, strokeWidth: 5, color: Colors.black)
+                      points: points,
+                      strokeWidth: 5,
+                      color: Colors.blue.shade400)
                 ],
               )
             ],
@@ -102,6 +114,86 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                             )
                           ],
                         ),
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      child: Row(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(left: 35),
+                            child: CircleAvatar(
+                              backgroundImage:
+                                  AssetImage('assets/images/driverIcon.png'),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 15),
+                            child: Column(
+                              children: [
+                                Text(
+                                  widget.carName,
+                                  style: TextStyle(fontStyle: FontStyle.italic),
+                                ),
+                                Text(
+                                  widget.carNumber,
+                                  style: TextStyle(fontStyle: FontStyle.italic),
+                                ),
+                                Text(
+                                  widget.driverName,
+                                  style: TextStyle(fontStyle: FontStyle.italic),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(5),
+                            color: Colors.green,
+                            margin: EdgeInsets.only(left: 35),
+                            child: Text(
+                              'OTP: 4251',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.all(10),
+                      child: Row(
+                        children: [
+                          IconButton(
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.sos,
+                                color: Colors.red,
+                                size: 40,
+                              )),
+                          Container(
+                            margin: EdgeInsets.only(left: 150),
+                            alignment: Alignment.centerRight,
+                            child: ElevatedButton.icon(
+                              onPressed: () => {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => MapTesting()),
+                                )
+                              },
+                              icon: Icon(
+                                // <-- Icon
+                                Icons.close,
+                                size: 24.0,
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.white,
+                              ),
+                              label: Text('CANCEL RIDE'), // <-- Text
+                            ),
+                          )
+                        ],
                       ),
                     )
                   ],
