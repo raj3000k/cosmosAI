@@ -183,7 +183,7 @@ class _SearchingCabState extends State<SearchingCab> {
                               style: TextStyle(fontStyle: FontStyle.italic),
                             ),
                             Text(
-                              'Rs. 270',
+                              'Rs. 120',
                               style: TextStyle(
                                   color: Colors.green.shade600,
                                   fontStyle: FontStyle.italic),
@@ -304,7 +304,7 @@ class _SearchingCabState extends State<SearchingCab> {
                               style: TextStyle(fontStyle: FontStyle.italic),
                             ),
                             Text(
-                              'Rs. 200',
+                              'Rs. 100',
                               style: TextStyle(
                                   color: Colors.green.shade600,
                                   fontStyle: FontStyle.italic),
@@ -424,7 +424,7 @@ class _SearchingCabState extends State<SearchingCab> {
                               style: TextStyle(fontStyle: FontStyle.italic),
                             ),
                             Text(
-                              'Rs. 320',
+                              'Rs. 150',
                               style: TextStyle(
                                   color: Colors.green.shade600,
                                   fontStyle: FontStyle.italic),

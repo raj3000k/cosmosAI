@@ -35,6 +35,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
       new LatLng(21.2441408, 81.6319132),
       new LatLng(21.252193, 81.6044256)
     ];
+
     return Scaffold(
       body: Stack(
         children: [
@@ -192,10 +193,147 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                               ),
                               label: Text('CANCEL RIDE'), // <-- Text
                             ),
-                          )
+                          ),
                         ],
                       ),
-                    )
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(right: 75),
+                      alignment: Alignment.centerRight,
+                      child: ElevatedButton.icon(
+                        onPressed: () => {
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                bool? isChecked = false;
+                                bool? upi = false;
+                                return Dialog(
+                                  child: Container(
+                                    height: 250,
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Icon(Icons.money,
+                                                  color: Colors.green),
+                                              Text('Pay By Cash',
+                                                  style: TextStyle(
+                                                      color: Colors.green)),
+                                              Checkbox(
+                                                  value: isChecked,
+                                                  checkColor: Colors.red,
+                                                  activeColor: Colors.green,
+                                                  onChanged: (bool? value1) {
+                                                    setState(() {
+                                                      isChecked = value1;
+                                                    });
+                                                  })
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Image.asset(
+                                                  'assets/images/upi.png',
+                                                  height: 50,
+                                                  width: 50),
+                                              Text('Pay By UPI',
+                                                  style: TextStyle(
+                                                      color: Colors.green)),
+                                              Checkbox(
+                                                  value: upi,
+                                                  checkColor: Colors.red,
+                                                  activeColor: Colors.green,
+                                                  onChanged: (bool? value2) {
+                                                    setState(() {
+                                                      upi = value2;
+                                                    });
+                                                  })
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Icon(Icons.credit_card,
+                                                  color: Colors.green),
+                                              Text('Pay By Card',
+                                                  style: TextStyle(
+                                                      color: Colors.green)),
+                                              Checkbox(
+                                                  value: isChecked,
+                                                  checkColor: Colors.red,
+                                                  activeColor: Colors.green,
+                                                  onChanged: (bool? value1) {
+                                                    setState(() {
+                                                      isChecked = value1;
+                                                    });
+                                                  })
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Icon(Icons.handshake_outlined,
+                                                  color: Colors.green),
+                                              Text('AbleGo PayLater',
+                                                  style: TextStyle(
+                                                      color: Colors.green)),
+                                              Checkbox(
+                                                  value: isChecked,
+                                                  checkColor: Colors.red,
+                                                  activeColor: Colors.green,
+                                                  onChanged: (bool? value1) {
+                                                    setState(() {
+                                                      isChecked = value1;
+                                                    });
+                                                  })
+                                            ],
+                                          ),
+                                        ),
+                                        ElevatedButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: Text(
+                                              'Continue',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                            style: ElevatedButton.styleFrom(
+                                                backgroundColor: Colors.green))
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              })
+                        },
+                        icon: Icon(
+                          // <-- Icon
+                          Icons.money,
+                          size: 24.0,
+                          color: Colors.green,
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                        ),
+                        label: Text(
+                          'Choose Payment Method',
+                          style: TextStyle(color: Colors.green),
+                        ), // <-- Text
+                      ),
+                    ),
                   ],
                 ),
               )),
