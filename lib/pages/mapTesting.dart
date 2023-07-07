@@ -69,7 +69,8 @@ class _MapTestingState extends State<MapTesting> {
                 children: [
                   CircleAvatar(
                     radius: 40,
-                    backgroundImage: AssetImage('assets/profile_picture.jpg'),
+                    backgroundImage:
+                        AssetImage('assets/images/profilePicture.png'),
                   ),
                   SizedBox(height: 10),
                   Text(
@@ -111,8 +112,8 @@ class _MapTestingState extends State<MapTesting> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.security),
-              title: Text('Insurance'),
+              leading: Icon(Icons.contact_emergency),
+              title: Text('My Emergency Contacts'),
               onTap: () {
                 // Handle Insurance press
               },
