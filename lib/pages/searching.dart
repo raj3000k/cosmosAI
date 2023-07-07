@@ -46,27 +46,28 @@ class _SearchingCabState extends State<SearchingCab> {
             child: Container(
               margin: EdgeInsets.only(top: 20),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                  ),
+                  // Padding(
+                  //   padding: EdgeInsets.all(10),
+                  // ),
                   (widget.wheelChairSelected
                       ? Image.asset('assets/images/wheelchairCab.png',
                           height: 100, width: 100)
                       : Container()),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                  ),
+                  // Padding(
+                  //   padding: EdgeInsets.all(10),
+                  // ),
                   (widget.onboardingSelected
                       ? Image.asset('assets/images/onboarding.png',
                           height: 70, width: 70)
                       : Container()),
-                  Padding(
-                    padding: EdgeInsets.all(10),
-                  ),
+                  // Padding(
+                  //   padding: EdgeInsets.all(10),
+                  // ),
                   (widget.signSelected
                       ? Image.asset('assets/images/signLanguage.png',
-                          height: 70, width: 70)
+                          height: 60, width: 60)
                       : Container()),
                 ],
               ),
@@ -107,6 +108,7 @@ class _SearchingCabState extends State<SearchingCab> {
                     ],
                   ),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
                         child: Image.asset(
@@ -116,7 +118,7 @@ class _SearchingCabState extends State<SearchingCab> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 10),
+                        // margin: EdgeInsets.only(left: 10),
                         child: Column(
                           children: [
                             Text(
@@ -156,7 +158,7 @@ class _SearchingCabState extends State<SearchingCab> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 5),
+                        // margin: EdgeInsets.only(left: 5),
                         child: Column(
                           children: [
                             Text(
@@ -173,7 +175,7 @@ class _SearchingCabState extends State<SearchingCab> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 10, left: 5),
+                        margin: EdgeInsets.only(top: 10),
                         child: Column(
                           children: [
                             Text(
@@ -227,6 +229,7 @@ class _SearchingCabState extends State<SearchingCab> {
                     ],
                   ),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
                         child: Image.asset(
@@ -236,7 +239,7 @@ class _SearchingCabState extends State<SearchingCab> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 10),
+                        // margin: EdgeInsets.only(left: 10),
                         child: Column(
                           children: [
                             Text(
@@ -276,7 +279,7 @@ class _SearchingCabState extends State<SearchingCab> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 5),
+                        // margin: EdgeInsets.only(left: 5),
                         child: Column(
                           children: [
                             Text(
@@ -293,7 +296,7 @@ class _SearchingCabState extends State<SearchingCab> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 5, top: 10),
+                        margin: EdgeInsets.only(top: 10),
                         child: Column(
                           children: [
                             Text(
@@ -346,6 +349,7 @@ class _SearchingCabState extends State<SearchingCab> {
                     ],
                   ),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
                         child: Image.asset(
@@ -355,7 +359,7 @@ class _SearchingCabState extends State<SearchingCab> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 15),
+                        // margin: EdgeInsets.only(left: 15),
                         child: Column(
                           children: [
                             Text(
@@ -395,7 +399,7 @@ class _SearchingCabState extends State<SearchingCab> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(left: 5),
+                        // margin: EdgeInsets.only(left: 5),
                         child: Column(
                           children: [
                             Text(
@@ -412,7 +416,7 @@ class _SearchingCabState extends State<SearchingCab> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 10, left: 5),
+                        margin: EdgeInsets.only(top: 10),
                         child: Column(
                           children: [
                             Text(

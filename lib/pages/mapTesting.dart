@@ -226,6 +226,7 @@ class _MapTestingState extends State<MapTesting> {
               child: Column(
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       TextButton(
                           style: ButtonStyle(
@@ -270,7 +271,7 @@ class _MapTestingState extends State<MapTesting> {
                           });
                         },
                         child: Container(
-                          margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                          // margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
                           decoration: BoxDecoration(
                               border: BorderDirectional(
                                   bottom: BorderSide(
@@ -305,7 +306,7 @@ class _MapTestingState extends State<MapTesting> {
                             });
                           },
                           child: Container(
-                            margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                            // margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
                             decoration: BoxDecoration(
                                 border: BorderDirectional(
                                     bottom: BorderSide(
