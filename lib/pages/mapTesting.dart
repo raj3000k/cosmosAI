@@ -174,7 +174,7 @@ class _MapTestingState extends State<MapTesting> {
                                 ));
                           }),
                       (wheelChairSelected
-                          ? Marker(
+                          ? (Marker(
                               point: LatLng(21.2441417, 81.6290905),
                               builder: (_) {
                                 return GestureDetector(
@@ -182,7 +182,8 @@ class _MapTestingState extends State<MapTesting> {
                                     child: Image.asset(
                                       'assets/images/cabIcon.png',
                                     ));
-                              })
+                              },
+                            ))
                           : Marker(
                               point: LatLng(21.2448292, 81.6403591),
                               builder: (_) {
@@ -191,7 +192,61 @@ class _MapTestingState extends State<MapTesting> {
                                     child: Image.asset(
                                       'assets/images/cabIcon.png',
                                     ));
-                              }))
+                              })),
+                      Marker(
+                          point: LatLng(21.249053, 81.6694206),
+                          builder: (_) {
+                            return GestureDetector(
+                                onTap: () {},
+                                child: Image.asset(
+                                  'assets/images/cabIcon.png',
+                                ));
+                          }),
+                      Marker(
+                          point: LatLng(21.2487162, 81.6696642),
+                          builder: (_) {
+                            return GestureDetector(
+                                onTap: () {},
+                                child: Image.asset(
+                                  'assets/images/cabIcon.png',
+                                ));
+                          }),
+                      Marker(
+                          point: LatLng(21.2480497, 81.6280602),
+                          builder: (_) {
+                            return GestureDetector(
+                                onTap: () {},
+                                child: Image.asset(
+                                  'assets/images/cabIcon.png',
+                                ));
+                          }),
+                      Marker(
+                          point: LatLng(21.2458125, 81.6228147),
+                          builder: (_) {
+                            return GestureDetector(
+                                onTap: () {},
+                                child: Image.asset(
+                                  'assets/images/cabIcon.png',
+                                ));
+                          }),
+                      Marker(
+                          point: LatLng(21.2425595, 81.6249827),
+                          builder: (_) {
+                            return GestureDetector(
+                                onTap: () {},
+                                child: Image.asset(
+                                  'assets/images/cabIcon.png',
+                                ));
+                          }),
+                      Marker(
+                          point: LatLng(21.2521533, 81.6364437),
+                          builder: (_) {
+                            return GestureDetector(
+                                onTap: () {},
+                                child: Image.asset(
+                                  'assets/images/cabIcon.png',
+                                ));
+                          }),
                     ],
                   )
                 ],
