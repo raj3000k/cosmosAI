@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:sample_app/pages/emergencyContacts.dart';
 import 'package:sample_app/pages/searching.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 import 'package:flutter_mapbox_autocomplete/flutter_mapbox_autocomplete.dart';
@@ -119,8 +120,12 @@ class _MapTestingState extends State<MapTesting> {
             ListTile(
               leading: Icon(Icons.contact_emergency),
               title: Text('My Emergency Contacts'),
-              onTap: () {
-                // Handle Insurance press
+              onTap: () { 
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => EmergencyContactPage()),
+                );
               },
             ),
             ListTile(
