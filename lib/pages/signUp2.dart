@@ -3,7 +3,7 @@ import 'package:sample_app/pages/disabilitySelect.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class SignUp2 extends StatefulWidget {
-  const SignUp2({super.key});
+  const SignUp2({key});
 
   @override
   State<SignUp2> createState() => _SignUp2State();

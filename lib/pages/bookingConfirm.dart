@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:sample_app/pages/mapTesting.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 
 class ConfirmBooking extends StatefulWidget {
   final String carName;
@@ -31,6 +32,56 @@ class AppConstants {
 class _ConfirmBookingState extends State<ConfirmBooking> {
   @override
   Widget build(BuildContext context) {
+    void showAlertDialog(BuildContext context, String title, String message) {
+      // set up the buttons
+      Widget continueButton = ElevatedButton(
+        child: const Text("Continue"),
+        onPressed: () {},
+      );
+      // set up the AlertDialog
+      AlertDialog alert = AlertDialog(
+        title: Text(title),
+        content: Text(message),
+        actions: [
+          continueButton,
+        ],
+      );
+      // show the dialog
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return alert;
+        },
+      );
+    }
+
+    void handlePaymentErrorResponse(PaymentFailureResponse response) {
+      /*
+    * PaymentFailureResponse contains three values:
+    * 1. Error Code
+    * 2. Error Description
+    * 3. Metadata
+    * */
+      showAlertDialog(context, "Payment Failed",
+          "Code: ${response.code}\nDescription: ${response.message}\nMetadata:${response.error.toString()}");
+    }
+
+    void handlePaymentSuccessResponse(PaymentSuccessResponse response) {
+      /*
+    * Payment Success Response contains three values:
+    * 1. Order ID
+    * 2. Payment ID
+    * 3. Signature
+    * */
+      showAlertDialog(
+          context, "Payment Successful", "Payment ID: ${response.paymentId}");
+    }
+
+    void handleExternalWalletSelected(ExternalWalletResponse response) {
+      showAlertDialog(
+          context, "External Wallet Selected", "${response.walletName}");
+    }
+
     var points = <LatLng>[
       new LatLng(21.2441408, 81.6319132),
       new LatLng(21.252193, 81.6044256)
@@ -201,123 +252,147 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                       margin: EdgeInsets.only(right: 75),
                       alignment: Alignment.centerRight,
                       child: ElevatedButton.icon(
-                        onPressed: () => {
-                          showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                bool? isChecked = false;
-                                bool? upi = false;
-                                return Dialog(
-                                  child: Container(
-                                    height: 250,
-                                    child: Column(
-                                      children: [
-                                        Container(
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              Icon(Icons.money,
-                                                  color: Colors.green),
-                                              Text('Pay By Cash',
-                                                  style: TextStyle(
-                                                      color: Colors.green)),
-                                              Checkbox(
-                                                  value: isChecked,
-                                                  checkColor: Colors.red,
-                                                  activeColor: Colors.green,
-                                                  onChanged: (bool? value1) {
-                                                    setState(() {
-                                                      isChecked = value1;
-                                                    });
-                                                  })
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              Image.asset(
-                                                  'assets/images/upi.png',
-                                                  height: 50,
-                                                  width: 50),
-                                              Text('Pay By UPI',
-                                                  style: TextStyle(
-                                                      color: Colors.green)),
-                                              Checkbox(
-                                                  value: upi,
-                                                  checkColor: Colors.red,
-                                                  activeColor: Colors.green,
-                                                  onChanged: (bool? value2) {
-                                                    setState(() {
-                                                      upi = value2;
-                                                    });
-                                                  })
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              Icon(Icons.credit_card,
-                                                  color: Colors.green),
-                                              Text('Pay By Card',
-                                                  style: TextStyle(
-                                                      color: Colors.green)),
-                                              Checkbox(
-                                                  value: isChecked,
-                                                  checkColor: Colors.red,
-                                                  activeColor: Colors.green,
-                                                  onChanged: (bool? value1) {
-                                                    setState(() {
-                                                      isChecked = value1;
-                                                    });
-                                                  })
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              Icon(Icons.handshake_outlined,
-                                                  color: Colors.green),
-                                              Text('AbleGo PayLater',
-                                                  style: TextStyle(
-                                                      color: Colors.green)),
-                                              Checkbox(
-                                                  value: isChecked,
-                                                  checkColor: Colors.red,
-                                                  activeColor: Colors.green,
-                                                  onChanged: (bool? value1) {
-                                                    setState(() {
-                                                      isChecked = value1;
-                                                    });
-                                                  })
-                                            ],
-                                          ),
-                                        ),
-                                        ElevatedButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: Text(
-                                              'Continue',
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            ),
-                                            style: ElevatedButton.styleFrom(
-                                                backgroundColor: Colors.green))
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              })
+                        onPressed: () {
+                          Razorpay razorpay = Razorpay();
+                          var options = {
+                            'key': 'rzp_test_Www4oaWIUCocz9',
+                            'amount': 100,
+                            'name': 'AbleGO Services Pvt.Ltd. .',
+                            'description': 'Cab Booking',
+                            'retry': {'enabled': true, 'max_count': 1},
+                            'send_sms_hash': true,
+                            'prefill': {
+                              'contact': '9131186159',
+                              'email': 'payments@ablegoservices.com'
+                            },
+                            'external': {
+                              'wallets': ['paytm']
+                            }
+                          };
+                          razorpay.on(Razorpay.EVENT_PAYMENT_ERROR,
+                              handlePaymentErrorResponse);
+                          razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS,
+                              handlePaymentSuccessResponse);
+                          razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET,
+                              handleExternalWalletSelected);
+                          razorpay.open(options);
+
+                          // showDialog(
+                          //     context: context,
+                          //     builder: (BuildContext context) {
+                          //       bool? isChecked = false;
+                          //       bool? upi = false;
+                          //       return Dialog(
+                          //         child: Container(
+                          //           height: 250,
+                          //           child: Column(
+                          //             children: [
+                          //               Container(
+                          //                 child: Row(
+                          //                   mainAxisAlignment:
+                          //                       MainAxisAlignment.spaceEvenly,
+                          //                   children: [
+                          //                     Icon(Icons.money,
+                          //                         color: Colors.green),
+                          //                     Text('Pay By Cash',
+                          //                         style: TextStyle(
+                          //                             color: Colors.green)),
+                          //                     Checkbox(
+                          //                         value: isChecked,
+                          //                         checkColor: Colors.red,
+                          //                         activeColor: Colors.green,
+                          //                         onChanged: (bool? value1) {
+                          //                           setState(() {
+                          //                             isChecked = value1;
+                          //                           });
+                          //                         })
+                          //                   ],
+                          //                 ),
+                          //               ),
+                          //               Container(
+                          //                 child: Row(
+                          //                   mainAxisAlignment:
+                          //                       MainAxisAlignment.spaceEvenly,
+                          //                   children: [
+                          //                     Image.asset(
+                          //                         'assets/images/upi.png',
+                          //                         height: 50,
+                          //                         width: 50),
+                          //                     Text('Pay By UPI',
+                          //                         style: TextStyle(
+                          //                             color: Colors.green)),
+                          //                     Checkbox(
+                          //                         value: upi,
+                          //                         checkColor: Colors.red,
+                          //                         activeColor: Colors.green,
+                          //                         onChanged: (bool? value2) {
+                          //                           setState(() {
+                          //                             upi = value2;
+                          //                           });
+                          //                         })
+                          //                   ],
+                          //                 ),
+                          //               ),
+                          //               Container(
+                          //                 child: Row(
+                          //                   mainAxisAlignment:
+                          //                       MainAxisAlignment.spaceEvenly,
+                          //                   children: [
+                          //                     Icon(Icons.credit_card,
+                          //                         color: Colors.green),
+                          //                     Text('Pay By Card',
+                          //                         style: TextStyle(
+                          //                             color: Colors.green)),
+                          //                     Checkbox(
+                          //                         value: isChecked,
+                          //                         checkColor: Colors.red,
+                          //                         activeColor: Colors.green,
+                          //                         onChanged: (bool? value1) {
+                          //                           setState(() {
+                          //                             isChecked = value1;
+                          //                           });
+                          //                         })
+                          //                   ],
+                          //                 ),
+                          //               ),
+                          //               Container(
+                          //                 child: Row(
+                          //                   mainAxisAlignment:
+                          //                       MainAxisAlignment.spaceEvenly,
+                          //                   children: [
+                          //                     Icon(Icons.handshake_outlined,
+                          //                         color: Colors.green),
+                          //                     Text('AbleGo PayLater',
+                          //                         style: TextStyle(
+                          //                             color: Colors.green)),
+                          //                     Checkbox(
+                          //                         value: isChecked,
+                          //                         checkColor: Colors.red,
+                          //                         activeColor: Colors.green,
+                          //                         onChanged: (bool? value1) {
+                          //                           setState(() {
+                          //                             isChecked = value1;
+                          //                           });
+                          //                         })
+                          //                   ],
+                          //                 ),
+                          //               ),
+                          //               ElevatedButton(
+                          //                   onPressed: () {
+                          //                     Navigator.pop(context);
+                          //                   },
+                          //                   child: Text(
+                          //                     'Continue',
+                          //                     style: TextStyle(
+                          //                         color: Colors.white),
+                          //                   ),
+                          //                   style: ElevatedButton.styleFrom(
+                          //                       backgroundColor: Colors.green))
+                          //             ],
+                          //           ),
+                          //         ),
+                          //       );
+                          //     })
                         },
                         icon: Icon(
                           // <-- Icon
