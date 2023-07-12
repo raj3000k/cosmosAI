@@ -6,9 +6,10 @@ import 'package:latlong2/latlong.dart';
 import 'package:sample_app/pages/emergencyContacts.dart';
 import 'package:sample_app/pages/searching.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
+import 'package:flutter_mapbox_autocomplete/flutter_mapbox_autocomplete.dart';
 
 class MapTesting extends StatefulWidget {
-  const MapTesting({super.key});
+  const MapTesting({key});
 
   @override
   State<MapTesting> createState() => _MapTestingState();
@@ -50,12 +51,16 @@ class _MapTestingState extends State<MapTesting> {
   String wheelchair = 'Wheelchair';
   String assistance = 'Onboard Assistance';
   String sign = 'Sign language';
-  String pickUp = '';
+  String pickUp = 'Pick Up';
   String destination = '';
 
   GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
+  final _startPointController = TextEditingController();
+  final myController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    myController.text = 'Pick Up';
     return Scaffold(
       key: _globalKey,
       drawer: Drawer(
@@ -471,15 +476,57 @@ class _MapTestingState extends State<MapTesting> {
                             color: Colors.white,
                             borderRadius:
                                 BorderRadius.all(Radius.circular(20))),
+                        // child: TextField(
+                        //   decoration: InputDecoration(
+                        //     enabledBorder: InputBorder.none,
+                        //     hintText: 'Pick Up Location',
+                        //     suffixIcon: Icon(Icons.search),
+                        //   ),
+                        //   onTap: () {
+                        //     Navigator.push(
+                        //         context,
+                        //         MaterialPageRoute(
+                        //             builder: (context) =>
+                        //                 MapBoxAutoCompleteWidget(
+                        //                   apiKey:
+                        //                       'pk.eyJ1IjoiaGFyc2h1MDcxMSIsImEiOiJjbGppZHpsbXYwbWFtM3BvNWd1eDZ3a210In0.zj_4e5MiDhPqzk1bALR4zA',
+                        //                   onSelect: (place) {
+                        //                     pickUp = place.placeName;
+                        //                   },
+                        //                   limit: 10,
+                        //                 )));
+                        //   },
+                        //   enabled: true,
+                        //   // onChanged: (value) {
+                        //   //   // Handle search input
+                        //   //   pickUp = value;
+                        //   // },
+                        // ),
                         child: TextField(
-                          decoration: InputDecoration(
-                            enabledBorder: InputBorder.none,
-                            hintText: 'Pick Up Location',
-                            suffixIcon: Icon(Icons.search),
-                          ),
                           onChanged: (value) {
-                            // Handle search input
                             pickUp = value;
+                          },
+                          controller: myController,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MapBoxAutoCompleteWidget(
+                                  apiKey:
+                                      "pk.eyJ1IjoiaGFyc2h1MDcxMSIsImEiOiJjbGppZHpsbXYwbWFtM3BvNWd1eDZ3a210In0.zj_4e5MiDhPqzk1bALR4zA",
+                                  hint: "Select starting point",
+                                  onSelect: (place) {
+                                    // TODO : Process the result gotten
+                                    // pickUp=place;
+                                    setState(() {
+                                      pickUp = place.placeName.toString();
+                                      myController.text = pickUp;
+                                    });
+                                  },
+                                  limit: 10,
+                                ),
+                              ),
+                            );
                           },
                         ),
                       )

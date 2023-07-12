@@ -4,7 +4,7 @@ import 'package:sample_app/pages/mapTesting.dart';
 import 'package:sample_app/pages/signUp2.dart';
 
 class DisabilitySelect extends StatefulWidget {
-  const DisabilitySelect({super.key});
+  const DisabilitySelect({key});
 
   @override
   State<DisabilitySelect> createState() => _DisabilitySelectState();
