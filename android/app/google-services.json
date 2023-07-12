@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "959977028675",
+    "project_id": "able-go-912cc",
+    "storage_bucket": "able-go-912cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:959977028675:android:ad5ddc6a64a23cbab3a8f6",
+        "android_client_info": {
+          "package_name": "com.example.sample_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "959977028675-vnspmivujva2poqmqot97nau8tm5k034.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sample_app",
+            "certificate_hash": "931a41ebad7e080528f076c8160d857a8c072e87"
+          }
+        },
+        {
+          "client_id": "959977028675-9kesfharmb613o5ps1532sd6nvv7ns4r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDY8unKlYuYNXsfxsd1-vJAoBCH-uWZVGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "959977028675-9kesfharmb613o5ps1532sd6nvv7ns4r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

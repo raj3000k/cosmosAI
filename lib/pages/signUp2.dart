@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sample_app/pages/disabilitySelect.dart';
+import 'package:sample_app/pages/GoogleSignIn.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class SignUp2 extends StatefulWidget {
   const SignUp2({key});
@@ -10,6 +12,10 @@ class SignUp2 extends StatefulWidget {
 }
 
 class _SignUp2State extends State<SignUp2> {
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  bool _isLoggedIn = false;
+  late GoogleSignInAccount _userObj;
+
   String fullName = '\0';
   String email = '\0';
   String phoneNumber = '\0';
@@ -35,7 +41,7 @@ class _SignUp2State extends State<SignUp2> {
               children: [
                 Container(
                   margin: EdgeInsets.all(20.0),
-                  height: 350,
+                  height: 400,
                   width: 350,
                   decoration: BoxDecoration(
                       color: Colors.white,
@@ -100,6 +106,7 @@ class _SignUp2State extends State<SignUp2> {
                               },
                             ),
                           ),
+
                           Container(
                               margin: EdgeInsets.only(top: 10),
                               child: ElevatedButton(
@@ -134,6 +141,78 @@ class _SignUp2State extends State<SignUp2> {
                                   ),
                                 ),
                               )),
+
+                          // Google Sign In
+
+                          Container(
+                            child: _isLoggedIn
+                                ? Center(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Image.network(_userObj.photoUrl!),
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                        Text(_userObj.displayName!),
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                        Text(_userObj.email),
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                        MaterialButton(
+                                          onPressed: () {
+                                            _googleSignIn
+                                                .signOut()
+                                                .then((value) {
+                                              setState(() {
+                                                _isLoggedIn = false;
+                                              });
+                                            }).catchError((e) {});
+                                          },
+                                          height: 50,
+                                          minWidth: 100,
+                                          color: Colors.blue,
+                                          child: const Text(
+                                            'Logout',
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                  )
+                                : Center(
+                                    child: ElevatedButton.icon(
+                                    onPressed: () {
+                                      _googleSignIn.signIn().then((userData) {
+                                        setState(() {
+                                          _isLoggedIn = true;
+                                          _userObj = userData!;
+                                        });
+                                      }).catchError((e) {
+                                        print(e);
+                                      });
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      primary: Colors.blue,
+                                      onPrimary:
+                                          Colors.white, // Background color
+                                    ),
+                                    icon: Icon(Icons.login),
+                                    label: Text("SignIn With Google"),
+                                  )),
+                          ),
+
+                          // Google SignIn Code Ends
                           Container(
                               margin: EdgeInsets.only(top: 0),
                               child: ElevatedButton(
@@ -161,17 +240,17 @@ class _SignUp2State extends State<SignUp2> {
                     ],
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: 300.0),
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: Image.asset(
-                      'assets/images/Group3.png',
-                      height: 250,
-                      width: width,
-                    ),
-                  ),
-                )
+                // Container(
+                //   margin: EdgeInsets.only(top: 300.0),
+                //   child: Align(
+                //     alignment: Alignment.center,
+                //     child: Image.asset(
+                //       'assets/images/Group3.png',
+                //       height: 250,
+                //       width: width,
+                //     ),
+                //   ),
+                // )
               ],
             ),
           ]),
