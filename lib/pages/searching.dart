@@ -26,6 +26,7 @@ class _SearchingCabState extends State<SearchingCab> {
   String driverName = '';
   String carName = '';
   String carNumber = '';
+  int cabFare = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -197,6 +198,7 @@ class _SearchingCabState extends State<SearchingCab> {
                                       carName = 'Honda City';
                                       carNumber = 'CG 04 A 5252';
                                       driverName = 'Mukesh Kumar';
+                                      cabFare = 12000;
                                     });
                                     Navigator.push(
                                         context,
@@ -206,6 +208,7 @@ class _SearchingCabState extends State<SearchingCab> {
                                                   carName: carName,
                                                   driverName: driverName,
                                                   carNumber: carNumber,
+                                                  cabFare: cabFare,
                                                 )));
                                   },
                                   child: Text('Book Now')),
@@ -318,15 +321,18 @@ class _SearchingCabState extends State<SearchingCab> {
                                       carName = 'Tata Tiago';
                                       carNumber = 'DL 04 A 2552';
                                       driverName = 'Sanjeev Kumar';
+                                      cabFare = 10000;
                                     });
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 ConfirmBooking(
-                                                    carName: carName,
-                                                    driverName: driverName,
-                                                    carNumber: carNumber)));
+                                                  carName: carName,
+                                                  driverName: driverName,
+                                                  carNumber: carNumber,
+                                                  cabFare: cabFare,
+                                                )));
                                   },
                                   child: Text('Book Now')),
                             )
@@ -438,15 +444,18 @@ class _SearchingCabState extends State<SearchingCab> {
                                       carName = 'Hyundai Creta';
                                       carNumber = 'MH 04 A 6752';
                                       driverName = 'Mick Daniel';
+                                      cabFare = 15000;
                                     });
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
                                                 ConfirmBooking(
-                                                    carName: carName,
-                                                    driverName: driverName,
-                                                    carNumber: carNumber)));
+                                                  carName: carName,
+                                                  driverName: driverName,
+                                                  carNumber: carNumber,
+                                                  cabFare: cabFare,
+                                                )));
                                   },
                                   child: Text('Book Now')),
                             )
