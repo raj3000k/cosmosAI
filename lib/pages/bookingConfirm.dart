@@ -12,13 +12,15 @@ class ConfirmBooking extends StatefulWidget {
   final String carName;
   final String driverName;
   final String carNumber;
+  final int cabFare;
 
-  const ConfirmBooking({
-    Key? key,
-    required this.carName,
-    required this.driverName,
-    required this.carNumber,
-  }) : super(key: key);
+  const ConfirmBooking(
+      {Key? key,
+      required this.carName,
+      required this.driverName,
+      required this.carNumber,
+      required this.cabFare})
+      : super(key: key);
 
   @override
   State<ConfirmBooking> createState() => _ConfirmBookingState();
@@ -35,6 +37,7 @@ class AppConstants {
 
 class _ConfirmBookingState extends State<ConfirmBooking> {
   List<EmergencyContact> emergencyContacts = [];
+  int fare = 0;
   @override
   void initState() {
     super.initState();
@@ -283,7 +286,9 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                       child: Row(
                         children: [
                           IconButton(
-                              onPressed: () {_showPopup();},
+                              onPressed: () {
+                                _showPopup();
+                              },
                               icon: Icon(
                                 Icons.sos,
                                 color: Colors.red,
@@ -322,7 +327,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                           Razorpay razorpay = Razorpay();
                           var options = {
                             'key': 'rzp_test_Www4oaWIUCocz9',
-                            'amount': 100,
+                            'amount': widget.cabFare,
                             'name': 'AbleGO Services Pvt.Ltd. .',
                             'description': 'Cab Booking',
                             'retry': {'enabled': true, 'max_count': 1},

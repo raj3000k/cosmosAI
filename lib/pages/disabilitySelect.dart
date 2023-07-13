@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:alan_voice/alan_voice.dart';
+import 'package:sample_app/pages/emergencyContacts.dart';
 import 'package:sample_app/pages/mapTesting.dart';
+import 'package:sample_app/pages/searching.dart';
 import 'package:sample_app/pages/signUp2.dart';
 
 class DisabilitySelect extends StatefulWidget {
@@ -25,6 +27,31 @@ class _DisabilitySelectState extends State<DisabilitySelect> {
         break;
       case "back":
         Navigator.pop(context);
+        break;
+
+      case "Book Cab Wheelchair":
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => SearchingCab(
+                  wheelChairSelected: true,
+                  onboardingSelected: false,
+                  signSelected: false,
+                  pickUp: '',
+                  destination: '')),
+        );
+        break;
+      case "Emergency Contacts":
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => EmergencyContactPage()),
+        );
+        break;
+      case "Cancel":
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => MapTesting()),
+        );
         break;
       default:
         debugPrint("Unknown command");
