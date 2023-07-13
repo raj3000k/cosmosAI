@@ -153,20 +153,27 @@ class _SignUp2State extends State<SignUp2> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: [
-                                        Image.network(_userObj.photoUrl!),
-                                        const SizedBox(
-                                          height: 20,
-                                        ),
-                                        Text(_userObj.displayName!),
-                                        const SizedBox(
-                                          height: 20,
-                                        ),
-                                        Text(_userObj.email),
-                                        const SizedBox(
-                                          height: 20,
-                                        ),
+                                        // Image.network(_userObj.photoUrl!),
+                                        // const SizedBox(
+                                        //   height: 2,
+                                        // ),
+                                        // Text(_userObj.displayName!),
+                                        // const SizedBox(
+                                        //   height: 2,
+                                        // ),
+                                        // Text(_userObj.email),
+                                        // const SizedBox(
+                                        //   height: 2,
+                                        // ),
                                         MaterialButton(
                                           onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      DisabilitySelect()),
+                                            );
+
                                             _googleSignIn
                                                 .signOut()
                                                 .then((value) {
@@ -179,7 +186,7 @@ class _SignUp2State extends State<SignUp2> {
                                           minWidth: 100,
                                           color: Colors.blue,
                                           child: const Text(
-                                            'Logout',
+                                            'Next',
                                             style:
                                                 TextStyle(color: Colors.white),
                                           ),
