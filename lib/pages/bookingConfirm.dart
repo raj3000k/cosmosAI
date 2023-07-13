@@ -3,6 +3,10 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:sample_app/pages/mapTesting.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
+import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
+import '../models/emergency_contact.dart';
 
 class ConfirmBooking extends StatefulWidget {
   final String carName;
@@ -30,6 +34,25 @@ class AppConstants {
 }
 
 class _ConfirmBookingState extends State<ConfirmBooking> {
+  List<EmergencyContact> emergencyContacts = [];
+  @override
+  void initState() {
+    super.initState();
+    loadEmergencyContacts();
+  }
+
+  Future<void> loadEmergencyContacts() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String>? contacts = prefs.getStringList('emergencyContacts');
+    if (contacts != null) {
+      setState(() {
+        emergencyContacts = contacts
+            .map((contact) => EmergencyContact.fromJson(json.decode(contact)))
+            .toList();
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     void showAlertDialog(BuildContext context, String title, String message) {
@@ -86,6 +109,49 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
       new LatLng(21.2441408, 81.6319132),
       new LatLng(21.252193, 81.6044256)
     ];
+    void _showPopup() {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Emergency Contacts'),
+            content: Container(
+              width: double.maxFinite,
+              height: 200,
+              child: ListView.builder(
+                itemCount: emergencyContacts.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final contact = emergencyContacts[index];
+                  return ListTile(
+                    title: Text(contact.name),
+                    subtitle: Text(contact.phoneNumber),
+                    trailing: IconButton(
+                      icon: Icon(Icons.call),
+                      onPressed: () async {
+                        String phoneNumber = contact.phoneNumber;
+                        if (await canLaunch('tel:$phoneNumber')) {
+                          await launch('tel:$phoneNumber');
+                        } else {
+                          // Handle error
+                        }
+                      },
+                    ),
+                  );
+                },
+              ),
+            ),
+            actions: [
+              ElevatedButton(
+                child: Text('Close'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
 
     return Scaffold(
       body: Stack(
@@ -217,7 +283,7 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
                       child: Row(
                         children: [
                           IconButton(
-                              onPressed: () {},
+                              onPressed: () {_showPopup();},
                               icon: Icon(
                                 Icons.sos,
                                 color: Colors.red,
