@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:sample_app/pages/mapTesting.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../models/emergency_contact.dart';
+import 'package:volume_watcher/volume_watcher.dart';
+import 'package:direct_sms/direct_sms.dart';
 
 class ConfirmBooking extends StatefulWidget {
   final String carName;
@@ -38,9 +42,23 @@ class AppConstants {
 class _ConfirmBookingState extends State<ConfirmBooking> {
   List<EmergencyContact> emergencyContacts = [];
   int fare = 0;
+  var directSms = DirectSms();
+  static const double doubleTapInterval =
+      300; // Time window for double tap in milliseconds
+  int _lastTapTimestamp = 0;
+
   @override
   void initState() {
     super.initState();
+    VolumeWatcher.addListener((volume) {
+      final currentTimestamp = DateTime.now().millisecondsSinceEpoch;
+      if (currentTimestamp - _lastTapTimestamp <= doubleTapInterval) {
+        sendSOSMessage();
+        _lastTapTimestamp = 0; // Reset the timestamp
+      } else {
+        _lastTapTimestamp = currentTimestamp;
+      }
+    });
     loadEmergencyContacts();
   }
 
@@ -53,6 +71,19 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
             .map((contact) => EmergencyContact.fromJson(json.decode(contact)))
             .toList();
       });
+    }
+  }
+
+  // Send SOS message
+  void sendSOSMessage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String emergencyContact = prefs.getString('emergencyContact') ?? '';
+    String sosMessage = prefs.getString('sosMessage') ?? '';
+    List<String> recipients = [emergencyContact];
+    String body = sosMessage;
+    final permission = Permission.sms.request();
+    if (await permission.isGranted) {
+      directSms.sendSms(message: body, phone: emergencyContact);
     }
   }
 
