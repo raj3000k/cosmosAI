@@ -113,6 +113,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  direct_sms:
+    dependency: "direct main"
+    description:
+      name: direct_sms
+      sha256: "4850578b849445fdd539ae76fbac2b79d0d63732a6692cd460b116e920e9e1ca"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.1"
   eventify:
     dependency: transitive
     description:
@@ -717,6 +725,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  volume_watcher:
+    dependency: "direct main"
+    description:
+      name: volume_watcher
+      sha256: "738f05c80dbda963cee4e9945291cd3c94229aa04c10da9386caef243deeac6f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   win32:
     dependency: transitive
     description:

@@ -7,6 +7,7 @@ import 'package:sample_app/pages/emergencyContacts.dart';
 import 'package:sample_app/pages/searching.dart';
 import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 import 'package:flutter_mapbox_autocomplete/flutter_mapbox_autocomplete.dart';
+import 'package:sample_app/pages/SOSPage.dart';
 
 class MapTesting extends StatefulWidget {
   const MapTesting({key});
@@ -120,11 +121,21 @@ class _MapTestingState extends State<MapTesting> {
             ListTile(
               leading: Icon(Icons.contact_emergency),
               title: Text('My Emergency Contacts'),
-              onTap: () { 
+              onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) => EmergencyContactPage()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.contact_emergency),
+              title: Text('SOS Setting'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SOSPage()),
                 );
               },
             ),

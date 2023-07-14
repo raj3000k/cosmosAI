@@ -45,6 +45,8 @@ dependencies:
   razorpay_flutter: ^1.3.5
   flutter_mapbox_autocomplete: ^2.0.0
   google_sign_in: ^6.1.4
+  volume_watcher: ^2.0.1
+  direct_sms: ^0.0.1
 
 dev_dependencies:
   flutter_test:
