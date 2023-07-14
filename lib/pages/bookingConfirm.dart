@@ -79,11 +79,34 @@ class _ConfirmBookingState extends State<ConfirmBooking> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String emergencyContact = prefs.getString('emergencyContact') ?? '';
     String sosMessage = prefs.getString('sosMessage') ?? '';
-    List<String> recipients = [emergencyContact];
-    String body = sosMessage;
+
+    if (emergencyContact.isEmpty) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('Emergency contact or SOS message not found!'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('OK'),
+              ),
+            ],
+          );
+        },
+      );
+      return;
+    }
+    if (sosMessage.isEmpty) {
+      sosMessage =
+          "This is SOS Message from AbleGo. Your buddy could be indanger";
+    }
     final permission = Permission.sms.request();
     if (await permission.isGranted) {
-      directSms.sendSms(message: body, phone: emergencyContact);
+      directSms.sendSms(message: sosMessage, phone: emergencyContact);
     }
   }
 

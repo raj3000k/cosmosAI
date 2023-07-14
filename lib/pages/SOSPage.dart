@@ -28,7 +28,6 @@ class _SOSPageState extends State<SOSPage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String emergencyContact = prefs.getString('emergencyContact') ?? '';
     String sosMessage = prefs.getString('sosMessage') ?? '';
-
     _emergencyContactController.text = emergencyContact;
     _sosMessageController.text = sosMessage;
   }
