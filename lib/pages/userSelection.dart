@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sample_app/pages/driverSignUp.dart';
 import 'package:sample_app/pages/signUp2.dart';
 
 class UserPage extends StatefulWidget {
@@ -17,53 +18,60 @@ class _UserSelect extends State<UserPage> {
       appBar: null,
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Register as a ',
-              style: TextStyle(fontSize: 41,
-                background: Paint()
-                  ..color = Colors.yellow
-                  ..strokeWidth = 50
-                  ..strokeJoin = StrokeJoin.round
-                  ..strokeCap = StrokeCap.round
-                  ..style = PaintingStyle.stroke,
-                // color: Colors.white,
+            Container(
+              margin: EdgeInsets.only(top: 50),
+              child: Text(
+                'Select User ',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 40,
+                    fontStyle: FontStyle.italic),
               ),
             ),
-            SizedBox(
+            Container(
+              margin: EdgeInsets.only(top: 200),
               height: 50,
-            ),
-            ElevatedButton.icon(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SignUp2()),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+              width: 200,
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignUp2()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  primary: Colors.blue,
+                  onPrimary: Colors.white, // Background color
                 ),
-                primary: Colors.blue,
-                onPrimary: Colors.white, // Background color
+                icon: Icon(Icons.people_alt_outlined),
+                label: Text("Passenger"),
               ),
-              icon: Icon(Icons.people_alt_outlined),
-              label: Text("User"),
             ),
-            ElevatedButton.icon(
-              onPressed: () {
-                UserType = 'd';
-              },
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+            Container(
+              margin: EdgeInsets.only(top: 20),
+              height: 50,
+              width: 200,
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DriverSignUp()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  primary: Colors.blue,
+                  onPrimary: Colors.white, // Background color
                 ),
-                primary: Colors.blue,
-                onPrimary: Colors.white, // Background color
+                icon: Icon(Icons.directions_car),
+                label: Text("Driver"),
               ),
-              icon: Icon(Icons.people_alt_outlined),
-              label: Text("Driver"),
             )
           ],
         ),
