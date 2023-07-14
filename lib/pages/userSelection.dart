@@ -22,17 +22,18 @@ class _UserSelect extends State<UserPage> {
             Container(
               margin: EdgeInsets.only(top: 50),
               child: Text(
-                'Select User ',
+                'Select User Mode ',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 40,
-                    fontStyle: FontStyle.italic),
+                    fontSize: 45,
+                    fontWeight: FontWeight.w800),
               ),
             ),
+            
             Container(
               margin: EdgeInsets.only(top: 200),
-              height: 50,
-              width: 200,
+              height: 100,
+              width: 300,
               child: ElevatedButton.icon(
                 onPressed: () {
                   Navigator.push(
@@ -48,13 +49,15 @@ class _UserSelect extends State<UserPage> {
                   onPrimary: Colors.white, // Background color
                 ),
                 icon: Icon(Icons.people_alt_outlined),
-                label: Text("Passenger"),
+                label: Text("Passenger",
+                  style: TextStyle(fontSize: 30),
+                ),
               ),
             ),
             Container(
               margin: EdgeInsets.only(top: 20),
-              height: 50,
-              width: 200,
+              height: 100,
+              width: 300,
               child: ElevatedButton.icon(
                 onPressed: () {
                   Navigator.push(
@@ -70,9 +73,16 @@ class _UserSelect extends State<UserPage> {
                   onPrimary: Colors.white, // Background color
                 ),
                 icon: Icon(Icons.directions_car),
-                label: Text("Driver"),
+                label: Text("Driver", style: TextStyle(fontSize: 30),),
               ),
-            )
+            ),
+            Container(
+              child:Image.asset(
+              'assets/images/Group2.png',
+              fit: BoxFit.fitWidth,
+              height: 300,
+              alignment: Alignment.bottomCenter,
+            )),
           ],
         ),
       ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sample_app/pages/DriverMainPage.dart';
+
 
 class DriverTraining extends StatefulWidget {
   const DriverTraining({key});
@@ -128,7 +130,12 @@ class _DriverTrainingState extends State<DriverTraining> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                         Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => DriverMain()),
+                        );
+                      },
                       child: Text(
                         'LATER',
                         style: TextStyle(color: Colors.white),
