@@ -1,7 +1,6 @@
 # AbleGO
 
 <p align="justify">
-<h2>inCode 2023 by inDrive Project by Team Cubix</h2>
 
 <h2> Project Description </h2>
 
@@ -36,16 +35,4 @@ Download the zip file and run the following command inside the directory.
 
  `flutter run`
 
-<br>
-<h2>Team Members</h2>
-   <p>
- 
- 1. [Raj Motwani](https://github.com/raj3000k)<br>
- 2. [Harsh Agrawal](https://github.com/harshu1611)<br>
- 3. [Abdul Hakim](https://github.com/AbdulhakimZ)<br>
- 4. Shivam Gupta<br>
- 4. Disha Jain<br>
- 4. Pilkit Goyal<br>
- 
-   </p>
-<br>
+
